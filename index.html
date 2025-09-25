@@ -21,6 +21,26 @@
   gtag('config', 'AW-17598882352');
 </script>
 
+<!-- Event snippet for Solicitar cotação conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17598882352/UGzqCIDEp6EbELDE5sdB',
+      'value': 1.0,
+      'currency': 'BRL',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+
 <body>
     <header class="main-header">
         <div class="container">
