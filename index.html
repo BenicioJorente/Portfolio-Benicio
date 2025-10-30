@@ -14,30 +14,30 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17598882352"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'AW-17598882352');
+    gtag('config', 'AW-17598882352');
 </script>
 
 <!-- Event snippet for Solicitar cotação conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
+    function gtag_report_conversion(url) {
+        var callback = function () {
+            if (typeof (url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17598882352/UGzqCIDEp6EbELDE5sdB',
+            'value': 1.0,
+            'currency': 'BRL',
+            'event_callback': callback
+        });
+        return false;
     }
-  };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17598882352/UGzqCIDEp6EbELDE5sdB',
-      'value': 1.0,
-      'currency': 'BRL',
-      'event_callback': callback
-  });
-  return false;
-}
 </script>
 
 
@@ -67,9 +67,9 @@ function gtag_report_conversion(url) {
 
     <section id="hero" class="hero-section">
         <div class="container">
-            <h1 class="reveal-item">Portfólio Benício Jorente</h1>
-            <p class="reveal-item delay-1">DESENVOLVEDOR WEB | ANALISTA DE QUALIDADE DE SOFTWARE</p>
-            <a href="#services" class="btn reveal-item delay-2">Serviços</a>
+            <h1 class="reveal-item">Transformo ideias em sites modernos e funcionais</h1>
+            <p class="reveal-item delay-1">Desenvolvimento web profissional para empresas e empreendedores</p>
+            <a href="#services" class="btn reveal-item delay-2">Conheça meus serviços</a>
         </div>
     </section>
 
@@ -78,10 +78,11 @@ function gtag_report_conversion(url) {
             <div class="about-content">
                 <div class="text-content reveal-item">
                     <h2>Sobre mim</h2>
-                    Sou formado em Engenharia de Software e já atuei como Analista de Qualidade, o que me deu um olhar
-                    atento para detalhes e boas práticas. Hoje, trabalho com desenvolvimento de sites, ajudando pessoas
-                    e empresas a transformarem suas ideias em presença digital. Gosto de unir técnica e criatividade
-                    para entregar soluções simples, funcionais e com propósito.
+                    Sou desenvolvedor web com foco em criar sites modernos, rápidos e intuitivos que ajudam empresas a
+                    se destacarem online.
+                    Cada projeto é pensado para gerar resultados reais — com design limpo, boa performance e foco no
+                    usuário.
+
                 </div>
                 <div class="image-content reveal-item delay-1">
                     <img src="assets/imagem-site.png" alt="Nossa Equipe">
@@ -124,21 +125,24 @@ function gtag_report_conversion(url) {
                         <img src="assets/desenvolvedor.png" alt="Ícone de Desenvolvedor">
                     </div>
                     <h3>Desenvolvimento Web</h3>
-                    <p>Criação de sites web com entrega rápida e de alta performance.</p>
+                    <p>Desenvolvimento de sites modernos, rápidos e profissionais — prontos para gerar resultados e
+                        fortalecer sua marca online.</p>
                 </div>
                 <div class="service-item reveal-item delay-2">
                     <div class="icon">
                         <img src="assets/celular.png" alt="Ícone de Celular">
                     </div>
                     <h3>Responsividade para Celulares</h3>
-                    <p>Desenvolvimento de sites responsivos para diferentes tamanhos de tela.</p>
+                    <p>Seu site perfeito em qualquer dispositivo — do computador ao celular, sempre com design adaptável
+                        e experiência fluida.</p>
                 </div>
                 <div class="service-item reveal-item delay-3">
                     <div class="icon">
                         <img src="assets/whatsapp.png" alt="Ícone de whatsapp">
                     </div>
                     <h3>Integração com whatsapp</h3>
-                    <p>Sites com botões de whatsapp para contato direto.</p>
+                    <p>Facilite o contato com seus clientes com um clique — integração direta com o WhatsApp no seu
+                        site.</p>
                 </div>
             </div>
         </div>
@@ -149,9 +153,9 @@ function gtag_report_conversion(url) {
             <h2 class="reveal-item">Meus Trabalhos</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item reveal-item delay-1">
-                    <img src="assets/site-clair.png" alt="Projeto A">
-                    <h3>Projeto Exemplo</h3>
-                    <p>Projeto pessoal com responsividade de tela</p>
+                    <img src="assets/podo1.png" alt="Projeto A">
+                    <h3>Site Podologia</h3>
+                    <p>Site desenvolvido para uma podóloga</p>
                 </div>
                 <div class="portfolio-item reveal-item delay-2">
                     <img src="assets/site2.png" alt="Projeto B">
@@ -169,31 +173,32 @@ function gtag_report_conversion(url) {
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="reveal-item">Entre em contato</h2>
+            <h2 class="reveal-item">Vamos criar seu site?</h2>
             <div class="contact-content">
                 <div class="contact-form reveal-item delay-1">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formsubmit.co/jorente.benicio@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="Novo contato do site!">
+                        <input type="hidden" name="_next" value="https://www.beniciojorente.com.br/?success=true">
+                        <input type="hidden" name="_template" value="basic">
+
                         <input type="text" name="name" placeholder="Nome" required>
                         <input type="email" name="email" placeholder="E-mail" required>
                         <textarea name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
 
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_subject" value="Novo contato do site!">
-                        <input type="hidden" name="_template" value="box">
-
                         <button type="submit" class="btn">Enviar Mensagem</button>
                     </form>
+
                     <div id="formMessage" class="form-message"></div>
                 </div>
-
                 <div class="contact-info reveal-item delay-2">
                     <h3>Informações de Contato</h3>
                     <p>Email: jorente.benicio@gmail.com</p>
                     <p>Telefone: (67) 99152-0216</p>
-                    <p>Endereço:<br>Campo Grande - MS, Brasil</p>
+                    <p>Endereço: Campo Grande - MS, Brasil</p>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/beniciojorente" target="_blank"><img src="assets/instagram.png"
-                                alt="Instagram"> </a>
+                        <a href="https://www.instagram.com/beniciojorente" target="_blank"><img
+                                src="assets/instagram.png" alt="Instagram"> </a>
                         <a href="https://www.linkedin.com/in/beniciojorente/" target="_blank"><img
                                 src="assets/linkedin.png" alt="LinkedIn"></a>
                         <a href="https://wa.me/5567991520216" target="_blank">

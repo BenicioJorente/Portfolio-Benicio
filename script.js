@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemTop = item.getBoundingClientRect().top;
             
             // Define o ponto de gatilho para a animação
-            // No caso, quando o elemento estiver a 100px acima da parte de baixo da tela
             if (itemTop < windowHeight - 100) {
                 item.classList.add('is-visible');
             }
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     // Chama a função uma vez no carregamento para os elementos que já estão visíveis
     revealOnScroll();
-
 
     // Funcionalidade do menu hambúrguer para dispositivos móveis
     const navToggle = document.querySelector('.nav-toggle');
@@ -50,47 +48,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-});
-
-    // NOVA LÓGICA PARA O FORMULÁRIO DE CONTATO
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(contactForm);
-        const object = {};
-        formData.forEach((value, key) => object[key] = value);
-        const json = JSON.stringify(object);
-
-        try {
-            const response = await fetch('https://formsubmit.co/ajax/jorente.benicio@gmail.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
+    // Função para o formulário de contato
+    function initContactForm() {
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                
+                // Mostrar loading
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+                formMessage.textContent = '';
+                formMessage.className = 'form-message';
+                
+                try {
+                    const formData = new FormData(this);
+                    
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        formMessage.textContent = 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
+                        formMessage.className = 'form-message success';
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Erro ao enviar mensagem');
+                    }
+                    
+                } catch (error) {
+                    console.error('Erro:', error);
+                    formMessage.textContent = 'Erro ao enviar mensagem. Por favor, tente novamente ou entre em contato diretamente pelo WhatsApp.';
+                    formMessage.className = 'form-message error';
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
             });
-
-            if (response.ok) {
-                formMessage.textContent = 'Obrigado pelo contato, logo retornaremos!';
-                formMessage.classList.add('success');
-                contactForm.reset();
-
-                setTimeout(() => {
-                    formMessage.classList.remove('success');
-                    formMessage.textContent = '';
-                }, 5000);
-            } else {
-                formMessage.textContent = 'Ops! Algo deu errado. Tente novamente mais tarde.';
-                formMessage.classList.remove('success');
-            }
-        } catch (error) {
-            console.error('Erro:', error);
-            formMessage.textContent = 'Ops! Algo deu errado. Verifique sua conexão e tente novamente.';
-            formMessage.classList.remove('success');
         }
-    });
+    }
 
+    // Inicializar formulário de contato
+    initContactForm();
+});
